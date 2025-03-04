@@ -37,10 +37,16 @@ class LoginPage:
 
     def assert_login_success(self):
         # 等待页面URL变化
-        self.page.wait_for_url(lambda url: "dashboard" in url, timeout=10000)  # 10秒超时
+        self.page.wait_for_url(lambda url: "dashboard" in url, timeout=5000)  # 10秒超时
         current_url = self.page.url
-        self.logger.info(f"验证登录成功，当前URL: {current_url}")
+        self.logger.info(f"验证登录成功 当前URL: {current_url}")
         if "dashboard" not in current_url:
             self.logger.error(f"登录失败，当前URL: {current_url}")
             assert False, "登录失败"
         self.logger.info("登录验证成功")
+    
+    def assert_login_fail(self, error_message: str):
+        self.logger.info(f"验证登录失败，错误信息: {error_message}")
+        # 等待错误提示出现
+        error_element = self.page.get_by_text(error_message)
+        error_element.wait_for(state="visible", timeout=3000)  # 5秒超时

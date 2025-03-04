@@ -30,5 +30,8 @@ def click_login_button(login_page):
 def assert_login_success(login_page):
     login_page.assert_login_success()
 
+@then(parsers.parse('我应该看到登录失败提示 "{error_message}"'))
+def assert_login_fail(login_page,error_message):
+    login_page.assert_login_fail(error_message)
 
 

@@ -14,3 +14,12 @@ Feature: 登录
       Examples:
         | username | password |
         | 13226689104 | max888888 |
+    
+    Scenario Outline: 失败登录
+      When 我输入用户名 "<username>"
+      When 我输入密码 "<password>"
+      And 点击登录按钮
+      Then 我应该看到登录失败提示 "<error_message>"
+      Examples:
+        | username | password | error_message |
+        | 13226689104 | error_password | 密码错误 |
