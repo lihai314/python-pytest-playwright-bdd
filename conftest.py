@@ -15,7 +15,7 @@ def browser_type(playwright):
 
 @pytest.fixture(scope="function")
 def browser(browser_type):
-    browser = browser_type.launch(headless=False)
+    browser = browser_type.launch(headless=True)
     log.info("启动浏览器")
     yield browser
     browser.close()
