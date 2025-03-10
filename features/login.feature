@@ -13,7 +13,7 @@ Feature: 登录
       Then 我应该看到 Dashboard 页面
       Examples:
         | username | password |
-        | 13226689104 | max888888 |
+        | 13226689109 | 123456789 |
     
     Scenario Outline: 失败登录
       When 我输入用户名 "<username>"
